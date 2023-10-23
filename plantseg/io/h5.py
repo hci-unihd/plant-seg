@@ -1,4 +1,5 @@
 import warnings
+from pathlib import Path
 from typing import Optional, Union
 
 import h5py
@@ -51,9 +52,10 @@ def _find_input_key(h5_file) -> str:
                            f"plantseg expects only one dataset to be present in input H5.")
 
 
-def load_h5(path: str,
+def load_h5(path: Union[str, Path],
             key: str,
             slices: Optional[slice] = None,
+
             info_only: bool = False) -> Union[tuple, tuple[np.array, tuple]]:
     """
     Load a dataset from a h5 file and returns some meta info about it.
@@ -67,7 +69,7 @@ def load_h5(path: str,
     Returns:
         Union[tuple, tuple[np.array, tuple]]: dataset as numpy array and infos
     """
-    with h5py.File(path, 'r') as f:
+    with h5py.File(path, mode='r') as f:
         if key is None:
             key = _find_input_key(f)
 
@@ -83,7 +85,7 @@ def load_h5(path: str,
     return file, infos
 
 
-def create_h5(path: str,
+def create_h5(path: Union[str, Path],
               stack: np.array,
               key: str,
               voxel_size: tuple[float, float, float] = (1.0, 1.0, 1.0),
@@ -101,7 +103,7 @@ def create_h5(path: str,
         None
     """
 
-    with h5py.File(path, mode) as f:
+    with h5py.File(path, mode=mode) as f:
         if key in f:
             del f[key]
         f.create_dataset(key, data=stack, compression='gzip')
@@ -109,7 +111,66 @@ def create_h5(path: str,
         f[key].attrs['element_size_um'] = voxel_size
 
 
-def list_keys(path):
+def write_attribute_h5(path: Union[str, Path], atr_dict: dict, key: str = None) -> None:
+    """
+    Helper function to add attributes to a h5 file
+    Args:
+        path (str): file path
+        atr_dict (dict): dictionary of attributes to add
+        key (str): key of the dataset in the h5 file
+
+    Returns:
+        None
+    """
+    assert Path(path).suffix in H5_EXTENSIONS, f"File {path} is not a h5 file"
+    assert Path(path).exists(), f"File {path} does not exist"
+    assert isinstance(atr_dict, dict), "atr_dict must be a dictionary"
+    assert isinstance(key, str) or key is None, "key must be a string or None"
+
+    with h5py.File(path, mode='r+') as f:
+        if key is None:
+            file = f
+        elif key in f:
+            file = f[key]
+        else:
+            raise KeyError(f"Key {key} not found in {path}")
+
+        for k, v in atr_dict.items():
+            if v is None:
+                v = 'none'
+            file.attrs[k] = v
+
+
+def read_attribute_h5(path: Union[str, Path], key: str = None) -> dict:
+    """
+    Helper function to read attributes from a h5 file
+    Args:
+        path (str): file path
+        key (str): key of the dataset in the h5 file
+
+    Returns:
+        dict: dictionary of attributes
+    """
+    assert Path(path).suffix in H5_EXTENSIONS, f"File {path} is not a h5 file"
+    assert Path(path).exists(), f"File {path} does not exist"
+    assert isinstance(key, str) or key is None, "key must be a string or None"
+    with h5py.File(path, mode='r') as f:
+        if key is None:
+            attrs = f.attrs
+        elif key in f:
+            attrs = f[key].attrs
+        else:
+            raise KeyError(f"Key {key} not found in {path}")
+
+        attrs_dict = {}
+        for k, v in attrs.items():
+            if isinstance(v, str) and v == 'none':
+                v = None
+            attrs_dict[k] = v
+        return attrs_dict
+
+
+def list_keys(path: Union[str, Path]) -> list[str]:
     """
     List all keys in a h5 file
     Args:
@@ -118,6 +179,7 @@ def list_keys(path):
     Returns:
         list of keys
     """
+
     def _recursive_find_keys(f, base='/'):
         _list_keys = []
         for key, dataset in f.items():
@@ -129,23 +191,23 @@ def list_keys(path):
                 _list_keys.append(f'{base}{key}')
         return _list_keys
 
-    with h5py.File(path, 'r') as h5_f:
+    with h5py.File(path, mode='r') as h5_f:
         return _recursive_find_keys(h5_f)
 
 
-def del_h5_key(path: str, key: str, mode: str = 'a') -> None:
+def del_h5_key(path: Union[str, Path], key: str, mode: str = 'a') -> None:
     """
     helper function to delete a dataset from a h5file
     """
-    with h5py.File(path, mode) as f:
+    with h5py.File(path, mode=mode) as f:
         if key in f:
             del f[key]
             f.close()
 
 
-def rename_h5_key(path: str, old_key: str, new_key: str, mode='r+') -> None:
+def rename_h5_key(path: Union[str, Path], old_key: str, new_key: str, mode='r+') -> None:
     """ Rename the 'old_key' dataset to 'new_key' """
-    with h5py.File(path, mode) as f:
+    with h5py.File(path, mode=mode) as f:
         if old_key in f:
             f[new_key] = f[old_key]
             del f[old_key]

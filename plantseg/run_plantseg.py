@@ -6,6 +6,7 @@ def parser():
     arg_parser.add_argument('--config', type=str, help='Path to the YAML config file', required=False)
     arg_parser.add_argument('--gui', action='store_true', help='Launch GUI configurator', required=False)
     arg_parser.add_argument('--napari', action='store_true', help='Napari Viewer', required=False)
+    arg_parser.add_argument('--training', action='store_true', help='Train a plantseg model', required=False)
     arg_parser.add_argument('--headless', type=str, help='Path to a .pkl workflow', required=False)
     arg_parser.add_argument('--version', action='store_true', help='PlantSeg version', required=False)
     arg_parser.add_argument('--clean', action='store_true',
@@ -24,11 +25,15 @@ def main():
         PlantSegApp()
 
     elif args.napari:
-        from plantseg.viewer.viewer import run_viewer
+        from plantseg.ui.viewer import run_viewer
         run_viewer()
 
+    elif args.training:
+        from plantseg.ui.training import run_training_headless
+        run_training_headless()
+
     elif args.headless:
-        from plantseg.viewer.headless import run_workflow_headless
+        from plantseg.ui.headless import run_workflow_headless
         run_workflow_headless(args.headless)
 
     elif args.config is not None:
@@ -47,7 +52,8 @@ def main():
 
     else:
         raise ValueError("Not enough arguments. Please use: \n"
-                         " --napari for launching the napari image viewer or \n"
+                         " --napari for launching the napari image ui or \n"
+                         " --training for launching the training configurator or \n"
                          " --headless 'path_to_workflow.pkl' for launching a saved workflow or \n"
                          " --gui for launching the graphical pipeline configurator or \n"
                          " --config 'path_to_config.yaml' for launching the pipeline from command line or \n"

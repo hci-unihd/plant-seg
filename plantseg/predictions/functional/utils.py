@@ -1,8 +1,8 @@
 import os
 
-from plantseg import plantseg_global_path, PLANTSEG_MODELS_DIR, home_path
+from plantseg import PLANTSEG_GLOBAL_PATH, PLANTSEG_MODELS_DIR, USER_HOME_PATH
 from plantseg.augment.transforms import get_test_augmentations
-from plantseg.models.model import get_model
+from plantseg.training.model import get_model
 from plantseg.pipeline import gui_logger
 from plantseg.predictions.functional.array_dataset import ArrayDataset
 from plantseg.predictions.functional.slice_builder import SliceBuilder
@@ -11,7 +11,7 @@ from plantseg.utils import load_config
 
 
 def get_predict_template():
-    predict_template_path = os.path.join(plantseg_global_path,
+    predict_template_path = os.path.join(PLANTSEG_GLOBAL_PATH,
                                          "resources",
                                          "config_predict_template.yaml")
     predict_template = load_config(predict_template_path)
@@ -23,7 +23,7 @@ def get_model_config(model_name, model_update=False):
     config_train = get_train_config(model_name)
     model_config = config_train.pop('model')
     model = get_model(model_config)
-    model_path = os.path.join(home_path,
+    model_path = os.path.join(USER_HOME_PATH,
                               PLANTSEG_MODELS_DIR,
                               model_name,
                               "best_checkpoint.pytorch")
@@ -44,7 +44,7 @@ def get_array_dataset(raw, model_name, patch, stride_ratio, global_normalization
         augs = get_test_augmentations(None)
 
     stride = get_stride_shape(patch, stride_ratio)
-    slice_builder = SliceBuilder(raw, label_dataset=None, weight_dataset=None, patch_shape=patch, stride_shape=stride)
+    slice_builder = SliceBuilder(raw, label_dataset=None, patch_shape=patch, stride_shape=stride)
     return ArrayDataset(raw, slice_builder, augs, verbose_logging=False)
 
 
