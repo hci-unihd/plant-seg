@@ -1,0 +1,739 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>PlantSeg Classic CLI &#8212; PlantSeg Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/plantseg_classic_cli/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="PlantSeg Python API" href="../python_api/index.html" />
+    <link rel="prev" title="Segmentation" href="../plantseg_classic_gui/segmentation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="PlantSeg Documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="PlantSeg Documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    PlantSeg introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interactive PlantSeg with Napari</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_interactive_napari/index.html">PlantSeg Interactive - Napari</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_interactive_napari/data_processing.html">Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_interactive_napari/unet_gasp_workflow.html">UNet GASP Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_interactive_napari/unet_training.html">UNet Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_interactive_napari/extra_pred.html">Extra Pred</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_interactive_napari/extra_seg.html">Extra Seg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_interactive_napari/headless_batch_processing.html">Headless Batch Processing</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classic PlantSeg GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_classic_gui/index.html">PlantSeg from GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_classic_gui/data_processing.html">Classic Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_classic_gui/cnn_predictions.html">CNN Predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_classic_gui/segmentation.html">Segmentation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classic PlantSeg CLI</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">PlantSeg Classic CLI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PlantSeg Python API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python_api/index.html">PlantSeg Python API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_api/data_processing.html">Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_api/cnn_predictions.html">PlantSeg CNN Predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_api/segmentation.html">PlantSeg Segmentation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/hci-unihd/plant-seg" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/hci-unihd/plant-seg/issues/new?title=Issue%20on%20page%20%2Fchapters/plantseg_classic_cli/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/plantseg_classic_cli/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>PlantSeg Classic CLI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guide-to-custom-configuration-file">Guide to Custom Configuration File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-keys-steps">Main Keys/Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-information">Additional information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-file-example">configuration file example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-usage-command-line">Pipeline Usage (command line)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#liftedmulticut-segmentation">LiftedMulticut segmentation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="plantseg-classic-cli">
+<h1>PlantSeg Classic CLI<a class="headerlink" href="#plantseg-classic-cli" title="Permalink to this heading">#</a></h1>
+<section id="guide-to-custom-configuration-file">
+<h2>Guide to Custom Configuration File<a class="headerlink" href="#guide-to-custom-configuration-file" title="Permalink to this heading">#</a></h2>
+<p>The configuration file defines all the operations in our pipeline together with the data to be processed.
+Please refer to <a class="reference download internal" download="" href="../../_downloads/672126d81b28a63aa9351472e311922c/config.yaml"><span class="xref download myst">config.yaml</span></a> for a sample pipeline configuration and a detailed explanation
+of all parameters.</p>
+</section>
+<section id="main-keys-steps">
+<h2>Main Keys/Steps<a class="headerlink" href="#main-keys-steps" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code> attribute: is used to define either the file to process or the directory containing the data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">preprocessing</span></code> attribute: contains a simple set of possible operations one would need to run on their data before calling the neural network.
+This step can be skipped if data is ready for neural network processing.
+Detailed instructions can be found at <a class="reference external" href="https://github.com/hci-unihd/plant-seg/wiki/Data-Processing">Data Processing</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cnn_prediction</span></code> attribute: contains all parameters relevant for predicting with a neural network.
+Description of all pre-trained models provided with the package is described below.
+Detailed instructions can be found at <a class="reference external" href="https://github.com/hci-unihd/plant-seg/wiki/Predictions">Predictions</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">segmentation</span></code> attribute: contains all parameters needed to run the partitioning algorithm (i.e., final Segmentation).
+Detailed instructions can be found at <a class="reference external" href="https://github.com/hci-unihd/plant-seg/wiki/Segmentation.md">Segmentation</a>.</p></li>
+</ul>
+</section>
+<section id="additional-information">
+<h2>Additional information<a class="headerlink" href="#additional-information" title="Permalink to this heading">#</a></h2>
+<p>The PlantSeg-related files (models, configs) will be placed inside your home directory under <code class="docutils literal notranslate"><span class="pre">~/.plantseg_models</span></code>.</p>
+<p>Our pipeline uses the PyTorch library for CNN predictions. PlantSeg can be run on systems without GPU, however
+for maximum performance, we recommend that the application is run on a machine with a high-performance GPU for deep learning.
+If the <code class="docutils literal notranslate"><span class="pre">CUDA_VISIBLE_DEVICES</span></code> environment variable is not specified, the prediction task will be distributed on all available GPUs.
+E.g. run: <code class="docutils literal notranslate"><span class="pre">CUDA_VISIBLE_DEVICES=0</span> <span class="pre">plantseg</span> <span class="pre">--config</span> <span class="pre">CONFIG_PATH</span></code> to restrict prediction to a given GPU.</p>
+</section>
+<section id="configuration-file-example">
+<h2>configuration file example<a class="headerlink" href="#configuration-file-example" title="Permalink to this heading">#</a></h2>
+<p>This modality of using PlantSeg is particularly suited for high throughput processing and for running
+PlantSeg on a remote server.
+To use PlantSeg from command line mode, you will need to create a configuration file using a standard text editor
+or using the save option of the PlantSeg GUI.</p>
+<p>Here is an example configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span><span class="n">DATA</span><span class="o">.</span><span class="n">tiff</span> <span class="c1"># Contains the path to the directory or file to process</span>
+
+<span class="n">preprocessing</span><span class="p">:</span>
+  <span class="c1"># enable/disable preprocessing</span>
+  <span class="n">state</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="c1"># create a new sub folder where all results will be stored</span>
+  <span class="n">save_directory</span><span class="p">:</span> <span class="s2">&quot;PreProcessing&quot;</span>
+  <span class="c1"># rescaling the volume is essential for the generalization of the networks. The rescaling factor can be computed as the resolution</span>
+  <span class="c1"># of the volume at hand divided by the resolution of the dataset used in training. Be careful, if the difference is too large check for a different model.</span>
+  <span class="n">factor</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+  <span class="c1"># the order of the spline interpolation</span>
+  <span class="n">order</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="c1"># optional: perform Gaussian smoothing or median filtering on the input.</span>
+  <span class="nb">filter</span><span class="p">:</span>
+    <span class="c1"># enable/disable filtering</span>
+    <span class="n">state</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="c1"># Accepted values: &#39;gaussian&#39;/&#39;median&#39;</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">gaussian</span>
+    <span class="c1"># sigma (gaussian) or disc radius (median)</span>
+    <span class="n">param</span><span class="p">:</span> <span class="mf">1.0</span>
+
+<span class="n">cnn_prediction</span><span class="p">:</span>
+  <span class="c1"># enable/disable UNet prediction</span>
+  <span class="n">state</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="c1"># Trained model name, more info on available models and custom models in the README</span>
+  <span class="n">model_name</span><span class="p">:</span> <span class="s2">&quot;generic_confocal_3D_unet&quot;</span>
+  <span class="c1"># If a CUDA capable gpu is available and corrected setup use &quot;cuda&quot;, if not you can use &quot;cpu&quot; for cpu only inference (slower)</span>
+  <span class="n">device</span><span class="p">:</span> <span class="s2">&quot;cpu&quot;</span>
+  <span class="c1"># how many subprocesses to use for data loading</span>
+  <span class="n">num_workers</span><span class="p">:</span> <span class="mi">8</span>
+  <span class="c1"># patch size given to the network (adapt to fit in your GPU mem)</span>
+  <span class="n">patch</span><span class="p">:</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">]</span>
+  <span class="c1"># stride between patches will be computed as `stride_ratio * patch`</span>
+  <span class="c1"># recommended values are in range `[0.5, 0.75]` to make sure the patches have enough overlap to get smooth prediction maps</span>
+  <span class="n">stride_ratio</span><span class="p">:</span> <span class="mf">0.75</span>
+  <span class="c1"># If &quot;True&quot; forces downloading networks from the online repos</span>
+  <span class="n">model_update</span><span class="p">:</span> <span class="kc">False</span>
+
+<span class="n">cnn_postprocessing</span><span class="p">:</span>
+  <span class="c1"># enable/disable cnn post processing</span>
+  <span class="n">state</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="c1"># if True convert to result to tiff</span>
+  <span class="n">tiff</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="c1"># rescaling factor</span>
+  <span class="n">factor</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+  <span class="c1"># spline order for rescaling</span>
+  <span class="n">order</span><span class="p">:</span> <span class="mi">2</span>
+
+<span class="n">segmentation</span><span class="p">:</span>
+  <span class="c1"># enable/disable segmentation</span>
+  <span class="n">state</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="c1"># Name of the algorithm to use for inferences. Options: MultiCut, MutexWS, GASP, DtWatershed</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;MultiCut&quot;</span>
+  <span class="c1"># Segmentation specific parameters here</span>
+  <span class="c1"># balance under-/over-segmentation; 0 - aim for undersegmentation, 1 - aim for oversegmentation. (Not active for DtWatershed)</span>
+  <span class="n">beta</span><span class="p">:</span> <span class="mf">0.5</span>
+  <span class="c1"># directory where to save the results</span>
+  <span class="n">save_directory</span><span class="p">:</span> <span class="s2">&quot;MultiCut&quot;</span>
+  <span class="c1"># enable/disable watershed</span>
+  <span class="n">run_ws</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="c1"># use 2D instead of 3D watershed</span>
+  <span class="n">ws_2D</span><span class="p">:</span> <span class="kc">True</span>
+  <span class="c1"># probability maps threshold</span>
+  <span class="n">ws_threshold</span><span class="p">:</span> <span class="mf">0.5</span>
+  <span class="c1"># set the minimum superpixels size</span>
+  <span class="n">ws_minsize</span><span class="p">:</span> <span class="mi">50</span>
+  <span class="c1"># sigma for the gaussian smoothing of the distance transform</span>
+  <span class="n">ws_sigma</span><span class="p">:</span> <span class="mf">2.0</span>
+  <span class="c1"># sigma for the gaussian smoothing of boundary</span>
+  <span class="n">ws_w_sigma</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="c1"># set the minimum segment size in the final segmentation. (Not active for DtWatershed)</span>
+  <span class="n">post_minsize</span><span class="p">:</span> <span class="mi">50</span>
+
+<span class="n">segmentation_postprocessing</span><span class="p">:</span>
+  <span class="c1"># enable/disable segmentation post processing</span>
+  <span class="n">state</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="c1"># if True convert to result to tiff</span>
+  <span class="n">tiff</span><span class="p">:</span> <span class="kc">False</span>
+  <span class="c1"># rescaling factor</span>
+  <span class="n">factor</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+  <span class="c1"># spline order for rescaling (keep 0 for segmentation post processing</span>
+  <span class="n">order</span><span class="p">:</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>This configuration can be found at <a class="reference external" href="https://github.com/hci-unihd/plant-seg/blob/master/examples/config.yaml">config.yaml</a>.</p>
+</section>
+<section id="pipeline-usage-command-line">
+<h2>Pipeline Usage (command line)<a class="headerlink" href="#pipeline-usage-command-line" title="Permalink to this heading">#</a></h2>
+<p>To start PlantSeg from the command line:
+First, activate the newly created conda environment with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>plant-seg
+</pre></div>
+</div>
+<p>then, one can just start the pipeline with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>plantseg<span class="w"> </span>--config<span class="w"> </span>CONFIG_PATH
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">CONFIG_PATH</span></code> is the path to a YAML configuration file.</p>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
+<p>The results are stored together with the source input files inside a nested directory structure.
+As an example, if we want to run PlantSeg inside a directory with two stacks, we will obtain the following
+outputs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">file1</span><span class="o">.</span><span class="n">tif</span>
+<span class="o">/</span><span class="n">file2</span><span class="o">.</span><span class="n">tif</span>
+<span class="o">/</span><span class="n">PreProcesing</span><span class="o">/</span>
+<span class="o">------------&gt;/</span><span class="n">file1</span><span class="o">.</span><span class="n">h5</span>
+<span class="o">------------&gt;/</span><span class="n">file1</span><span class="o">.</span><span class="n">yaml</span>
+<span class="o">------------&gt;/</span><span class="n">file2</span><span class="o">.</span><span class="n">h5</span>
+<span class="o">------------&gt;/</span><span class="n">file2</span><span class="o">.</span><span class="n">yaml</span>
+<span class="o">------------&gt;/</span><span class="n">generic_confocal_3d_unet</span><span class="o">/</span>
+<span class="o">-------------------------------------&gt;/</span><span class="n">file1_predictions</span><span class="o">.</span><span class="n">h5</span>
+<span class="o">-------------------------------------&gt;/</span><span class="n">file1_predictions</span><span class="o">.</span><span class="n">yaml</span>
+<span class="o">-------------------------------------&gt;/</span><span class="n">file2_predictions</span><span class="o">.</span><span class="n">h5</span>
+<span class="o">-------------------------------------&gt;/</span><span class="n">file2_predictions</span><span class="o">.</span><span class="n">yaml</span>
+<span class="o">-------------------------------------&gt;/</span><span class="n">GASP</span><span class="o">/</span>
+<span class="o">------------------------------------------&gt;/</span><span class="n">file_1_predions_gasp_average</span><span class="o">.</span><span class="n">h5</span>
+<span class="o">------------------------------------------&gt;/</span><span class="n">file_1_predions_gasp_average</span><span class="o">.</span><span class="n">yaml</span>
+<span class="o">------------------------------------------&gt;/</span><span class="n">file_2_predions_gasp_average</span><span class="o">.</span><span class="n">h5</span>
+<span class="o">------------------------------------------&gt;/</span><span class="n">file_2_predions_gasp_average</span><span class="o">.</span><span class="n">yaml</span>
+<span class="o">------------------------------------------&gt;/</span><span class="n">PostProcessing</span><span class="o">/</span>
+<span class="o">---------------------------------------------------------&gt;/</span><span class="n">file_1_predions_gasp_average</span><span class="o">.</span><span class="n">tiff</span>
+<span class="o">---------------------------------------------------------&gt;/</span><span class="n">file_1_predions_gasp_average</span><span class="o">.</span><span class="n">yaml</span>
+<span class="o">---------------------------------------------------------&gt;/</span><span class="n">file_2_predions_gasp_average</span><span class="o">.</span><span class="n">tiff</span>
+<span class="o">---------------------------------------------------------&gt;/</span><span class="n">file_2_predions_gasp_average</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<p>The use of this hierarchical directory structure allows PlantSeg to find the necessary files quickly and can be used
+to test different segmentation algorithms/parameter combinations minimizing the memory overhead on the disk.
+For the sake of reproducibility, every file is associated with a configuration file “.yaml” that saves all parameters used
+to produce the result.</p>
+</section>
+<section id="liftedmulticut-segmentation">
+<h2>LiftedMulticut segmentation<a class="headerlink" href="#liftedmulticut-segmentation" title="Permalink to this heading">#</a></h2>
+<p>As reported in our <a class="reference external" href="https://elifesciences.org/articles/57613">paper</a>, if one has a nuclei signal imaged together with
+the boundary signal, we could leverage the fact that one cell contains only one nucleus and use the <code class="docutils literal notranslate"><span class="pre">LiftedMultict</span></code>
+segmentation strategy and obtain improved segmentation.
+We will use the <em>Arabidopsis thaliana</em> lateral root as an example. The <code class="docutils literal notranslate"><span class="pre">LiftedMulticut</span></code> strategy consists of running
+PlantSeg two times:</p>
+<ol class="arabic simple">
+<li><p>Using PlantSeg to predict the nuclei probability maps using the <code class="docutils literal notranslate"><span class="pre">lightsheet_unet_bce_dice_nuclei_ds1x</span></code> network.
+In this case, only the pre-processing and CNN prediction steps are enabled in the config. See <a class="reference download internal" download="" href="../../_downloads/093aea85b4cc755247a7f5cf26c16aea/nuclei_predictions_example.yaml"><span class="xref download myst">example config</span></a>.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>plantseg<span class="w"> </span>--config<span class="w"> </span>nuclei_predictions_example.yaml
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Using PlantSeg to segment the input image with the <code class="docutils literal notranslate"><span class="pre">LiftedMulticut</span></code> algorithm given the nuclei probability maps from the 1st step.
+See <a class="reference download internal" download="" href="../../_downloads/144ce8a98dfa82629c77ada51cae0254/lifted_multicut_example.yaml"><span class="xref download myst">example config</span></a>. The notable difference is that in the <code class="docutils literal notranslate"><span class="pre">segmentation</span></code>
+part of the config, we set <code class="docutils literal notranslate"><span class="pre">name:</span> <span class="pre">LiftedMulticut</span></code> and the <code class="docutils literal notranslate"><span class="pre">nuclei_predictions_path</span></code> as the path to the directory where the nuclei pmaps
+were saved in step 1. Also, make sure that the <code class="docutils literal notranslate"><span class="pre">path</span></code> attribute points to the raw files containing the cell boundary staining (NOT THE NUCLEI).</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>plantseg<span class="w"> </span>--config<span class="w"> </span>lifted_multicut_example.yaml
+</pre></div>
+</div>
+<p>If case when the nuclei segmentation is given, one should skip step 1., add <code class="docutils literal notranslate"><span class="pre">is_segmentation=True</span></code> flag in the <a class="reference download internal" download="" href="../../_downloads/144ce8a98dfa82629c77ada51cae0254/lifted_multicut_example.yaml"><span class="xref download myst">config</span></a>
+and directly run step 2.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/plantseg_classic_cli"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../plantseg_classic_gui/segmentation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Segmentation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../python_api/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">PlantSeg Python API</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guide-to-custom-configuration-file">Guide to Custom Configuration File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-keys-steps">Main Keys/Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-information">Additional information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-file-example">configuration file example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-usage-command-line">Pipeline Usage (command line)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#liftedmulticut-segmentation">LiftedMulticut segmentation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lorenzo Cerrone, Adrian Wolny
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

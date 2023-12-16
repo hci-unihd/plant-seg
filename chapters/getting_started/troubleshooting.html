@@ -1,0 +1,583 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Troubleshooting &#8212; PlantSeg Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/getting_started/troubleshooting';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="PlantSeg Interactive - Napari" href="../plantseg_interactive_napari/index.html" />
+    <link rel="prev" title="Quick Start" href="quick_start.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="PlantSeg Documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="PlantSeg Documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    PlantSeg introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Troubleshooting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interactive PlantSeg with Napari</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_interactive_napari/index.html">PlantSeg Interactive - Napari</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_interactive_napari/data_processing.html">Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_interactive_napari/unet_gasp_workflow.html">UNet GASP Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_interactive_napari/unet_training.html">UNet Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_interactive_napari/extra_pred.html">Extra Pred</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_interactive_napari/extra_seg.html">Extra Seg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_interactive_napari/headless_batch_processing.html">Headless Batch Processing</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classic PlantSeg GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_classic_gui/index.html">PlantSeg from GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_classic_gui/data_processing.html">Classic Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_classic_gui/cnn_predictions.html">CNN Predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_classic_gui/segmentation.html">Segmentation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classic PlantSeg CLI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../plantseg_classic_cli/index.html">PlantSeg Classic CLI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PlantSeg Python API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python_api/index.html">PlantSeg Python API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_api/data_processing.html">Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_api/cnn_predictions.html">PlantSeg CNN Predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_api/segmentation.html">PlantSeg Segmentation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/hci-unihd/plant-seg" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/hci-unihd/plant-seg/issues/new?title=Issue%20on%20page%20%2Fchapters/getting_started/troubleshooting.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/getting_started/troubleshooting.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Troubleshooting</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="troubleshooting">
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>If you stumble in the following error message:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">AssertionError</span><span class="p">:</span>
+<span class="n">The</span> <span class="n">NVIDIA</span> <span class="n">driver</span> <span class="n">on</span> <span class="n">your</span> <span class="n">system</span> <span class="ow">is</span> <span class="n">too</span> <span class="n">old</span> <span class="p">(</span><span class="n">found</span> <span class="n">version</span> <span class="n">xxxx</span><span class="p">)</span><span class="o">.</span>
+<span class="n">Please</span> <span class="n">update</span> <span class="n">your</span> <span class="n">GPU</span> <span class="n">driver</span> <span class="n">by</span> <span class="n">downloading</span> <span class="ow">and</span> <span class="n">installing</span> <span class="n">a</span> <span class="n">new</span>
+<span class="n">version</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">URL</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">nvidia</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Download</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">aspx</span>
+<span class="n">Alternatively</span><span class="p">,</span> <span class="n">go</span> <span class="n">to</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">pytorch</span><span class="o">.</span><span class="n">org</span> <span class="n">to</span> <span class="n">install</span>
+<span class="n">a</span> <span class="n">PyTorch</span> <span class="n">version</span> <span class="n">that</span> <span class="n">has</span> <span class="n">been</span> <span class="n">compiled</span> <span class="k">with</span> <span class="n">your</span> <span class="n">version</span>
+<span class="n">of</span> <span class="n">the</span> <span class="n">CUDA</span> <span class="n">driver</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Torch not compiled with CUDA enabled&quot;</span><span class="p">)</span>
+<span class="ne">AssertionError</span><span class="p">:</span> <span class="n">Torch</span> <span class="ow">not</span> <span class="n">compiled</span> <span class="k">with</span> <span class="n">CUDA</span> <span class="n">enabled</span>
+</pre></div>
+</div>
+<p>It means that your cuda installation does not match the default in plantseg.
+You can check your current cuda version by typing in the terminal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="n">version</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Then you can re-install the pytorch version compatible with your cuda by activating your <code class="docutils literal notranslate"><span class="pre">plant-seg</span></code> environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">plant</span><span class="o">-</span><span class="n">seg</span>
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">pytorch</span> <span class="n">torchvision</span> <span class="n">cudatoolkit</span><span class="o">=&lt;</span><span class="n">YOU_CUDA_VERSION</span><span class="o">&gt;</span> <span class="n">pytorch</span>
+</pre></div>
+</div>
+<p>e.g. for cuda 9.2</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">pytorch</span> <span class="n">torchvision</span> <span class="n">cudatoolkit</span><span class="o">=</span><span class="mf">9.2</span> <span class="n">pytorch</span>
+</pre></div>
+</div>
+<p>Alternatively one can create the <code class="docutils literal notranslate"><span class="pre">plant-seg</span></code> environment from scratch and ensuring the correct version of cuda/pytorch, by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">plant</span><span class="o">-</span><span class="n">seg</span> <span class="o">-</span><span class="n">c</span> <span class="n">lcerrone</span> <span class="o">-</span><span class="n">c</span> <span class="n">abailoni</span> <span class="o">-</span><span class="n">c</span> <span class="n">cpape</span> <span class="o">-</span><span class="n">c</span> <span class="n">awolny</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">cudatoolkit</span><span class="o">=&lt;</span><span class="n">YOU_CUDA_VERSION</span><span class="o">&gt;</span> <span class="n">plantseg</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>If you use plantseg from the GUI and you receive an error similar to:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">key</span> <span class="p">:</span> <span class="s1">&#39;crop_volume&#39;</span> <span class="ow">is</span> <span class="n">missing</span><span class="p">,</span> <span class="n">plant</span><span class="o">-</span><span class="n">seg</span> <span class="n">requires</span> <span class="s1">&#39;crop_volume&#39;</span> <span class="n">to</span> <span class="n">run</span>
+</pre></div>
+</div>
+<p>(or a similar message for any of the other keys)
+It might be that the last session configuration file got corrupted or is outdated.
+You should be able to solve it by removing the corrupted file <code class="docutils literal notranslate"><span class="pre">config_gui_last.yaml</span></code>.</p>
+<p>If you have a standard installation of plantseg, you can remove it by executing on the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rm ~/.plantseg_models/configs/config_gui_last.yaml
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>If you use plantseg from the comand line and you receive an error similar to:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">key</span> <span class="p">:</span> <span class="s1">&#39;crop_volume&#39;</span> <span class="ow">is</span> <span class="n">missing</span><span class="p">,</span> <span class="n">plant</span><span class="o">-</span><span class="n">seg</span> <span class="n">requires</span> <span class="s1">&#39;crop_volume&#39;</span> <span class="n">to</span> <span class="n">run</span>
+</pre></div>
+</div>
+<p>Please make sure that your configuratiuon has the correct formatting and contains all required keys.
+An updated example can be found inside the directory <code class="docutils literal notranslate"><span class="pre">examples</span></code>, in this repository.</p>
+<ul class="simple">
+<li><p>If when trying to execute the Lifted Multicut pipeline you receive an error like:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;cannot import name &#39;</span><span class="n">lifted_problem_from_probabilities</span><span class="s1">&#39; from &#39;</span><span class="n">elf</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">features</span><span class="s1">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>The solution is to re-install <a class="reference external" href="https://github.com/constantinpape/elf">elf</a> via</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">python</span><span class="o">-</span><span class="n">elf</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>PlantSeg is under active development so it may happen that the models/configuration files saved in <code class="docutils literal notranslate"><span class="pre">~/.plantseg_modes</span></code>
+are outdated. In case of errors related to loading the configuration file, please close the PlantSeg app,
+remove <code class="docutils literal notranslate"><span class="pre">~/.plantseg_models</span></code> directory and try again.</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/getting_started"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="quick_start.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quick Start</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../plantseg_interactive_napari/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">PlantSeg Interactive - Napari</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lorenzo Cerrone, Adrian Wolny
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
