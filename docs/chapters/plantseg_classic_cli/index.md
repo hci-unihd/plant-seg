@@ -1,24 +1,22 @@
 # PlantSeg Classic CLI
 
 ## Guide to Custom Configuration File
+The configuration file is a YAML file that contains all the parameters needed to run the PlantSeg pipeline.
+Please refer to [config.yaml](../../../examples/config.yaml) for a sample pipeline configuration and a detailed explanation of all parameters. If you have any doubts on wha
 
-The configuration file defines all the operations in our pipeline together with the data to be processed.
-Please refer to [config.yaml](../../../examples/config.yaml) for a sample pipeline configuration and a detailed explanation
-of all parameters.
 
-## Main Keys/Steps
-* `path` attribute: is used to define either the file to process or the directory containing the data.
-* `preprocessing` attribute: contains a simple set of possible operations one would need to run on their data before calling the neural network.
-This step can be skipped if data is ready for neural network processing.
+### Configuration file structure
+The configuration file is divided into four main sections:
+* `path`: is used to define either the file to process or a directory. In the latter case, all files with a suitable extension will be processed.
+* `preprocessing`: in the preprocessing step, the input data is rescaled and filtered if needed. The rescaling factor can be computed as the resolution of the volume at hand divided by the resolution of the dataset used in training. Be careful, if the difference is too large check for a different model.
 Detailed instructions can be found at [Classic GUI (Data Processing)](https://hci-unihd.github.io/plant-seg/chapters/plantseg_classic_gui/data_processing.html).
-* `cnn_prediction` attribute: contains all parameters relevant for predicting with a neural network.
+* `cnn_prediction`: contains all parameters relevant for predicting with a neural network.
 Description of all pre-trained models provided with the package is described below.
 Detailed instructions can be found at [Classic GUI (Predictions)](https://hci-unihd.github.io/plant-seg/chapters/plantseg_classic_gui/cnn_predictions.html).
-* `segmentation` attribute: contains all parameters needed to run the partitioning algorithm (i.e., final Segmentation).
+* `segmentation`: contains all parameters needed to run the partitioning algorithm (i.e., final Segmentation).
 Detailed instructions can be found at [Classic GUI (Segmentation)](https://hci-unihd.github.io/plant-seg/chapters/plantseg_classic_gui/segmentation.html).
 
 ## Additional information
-
 The PlantSeg-related files (models, configs) will be placed inside your home directory under `~/.plantseg_models`.
 
 Our pipeline uses the PyTorch library for CNN predictions. PlantSeg can be run on systems without GPU, however
@@ -34,9 +32,10 @@ To use PlantSeg from command line mode, you will need to create a configuration 
 
 Here is an example configuration:
 
-```
+```yaml
 path: /home/USERNAME/DATA.tiff # Contains the path to the directory or file to process
 
+# Step 1: Data Preprocessing
 preprocessing:
   # enable/disable preprocessing
   state: True
@@ -56,6 +55,7 @@ preprocessing:
     # sigma (gaussian) or disc radius (median)
     param: 1.0
 
+# Step 2: CNN Prediction
 cnn_prediction:
   # enable/disable UNet prediction
   state: True
@@ -73,6 +73,7 @@ cnn_prediction:
   # If "True" forces downloading networks from the online repos
   model_update: False
 
+# Step 2.5: CNN Postprocessing
 cnn_postprocessing:
   # enable/disable cnn post processing
   state: False
@@ -83,6 +84,7 @@ cnn_postprocessing:
   # spline order for rescaling
   order: 2
 
+# Step 3: Segmentation
 segmentation:
   # enable/disable segmentation
   state: True
@@ -108,6 +110,7 @@ segmentation:
   # set the minimum segment size in the final segmentation. (Not active for DtWatershed)
   post_minsize: 50
 
+# Step 3.5: Segmentation Postprocessing
 segmentation_postprocessing:
   # enable/disable segmentation post processing
   state: False
@@ -119,6 +122,7 @@ segmentation_postprocessing:
   order: 0
 ```
 This configuration can be found at [config.yaml](https://github.com/hci-unihd/plant-seg/blob/master/examples/config.yaml).
+
 
 ## Pipeline Usage (command line)
 To start PlantSeg from the command line:
@@ -132,7 +136,7 @@ plantseg --config CONFIG_PATH
 ```
 where `CONFIG_PATH` is the path to a YAML configuration file.
 
-## Results
+## Output directory structure
 
 The results are stored together with the source input files inside a nested directory structure.
 As an example, if we want to run PlantSeg inside a directory with two stacks, we will obtain the following

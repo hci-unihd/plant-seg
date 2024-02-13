@@ -1,20 +1,20 @@
 # Quick Start
+There are three ways to use PlantSeg:
+* [Napari viewer](https://hci-unihd.github.io/plant-seg/chapters/plantseg_interactive_napari/) This is the most interactive way to use PlantSeg. It allows to run all the steps of the pipeline and visualize the results in a single using the [napari](https://napari.org/stable/) viewer. This is the recommended way to use PlantSeg on new data.
+* [Classic GUI](https://hci-unihd.github.io/plant-seg/chapters/plantseg_classic_gui/) This is the easiest way to use PlantSeg on large batches of data. It allows to configure and run all the steps of the pipeline. It is recommended to use this mode for high throughput processing and for running PlantSeg on a local machine.
+* [Command line](https://hci-unihd.github.io/plant-seg/chapters/plantseg_classic_cli/) This modality of using PlantSeg is particularly suited for high throughput processing and for running PlantSeg on a remote server. It allows to configure and run the pipeline using a configuration file.
 
-## Pipeline Usage (Napari viewer)
-PlantSeg app can also be started using napari as a viewer.
+## Quick start using the Napari viewer
 First, activate the newly created conda environment with:
 ```bash
 conda activate plant-seg
 ```
-
 then, start the plantseg in napari
 ```bash
 $ plantseg --napari
 ```
-A more in depth guide can be found in our [documentation (GUI)](https://hci-unihd.github.io/plant-seg/chapters/plantseg_interactive_napari/).
 
-## Pipeline Usage (GUI)
-PlantSeg app can also be started in a GUI mode, where basic user interface allows to configure and run the pipeline.
+## Quick start using the Classic GUI
 First, activate the newly created conda environment with:
 ```bash
 conda activate plant-seg
@@ -24,11 +24,8 @@ then, run the GUI by simply typing:
 ```bash
 $ plantseg --gui
 ```
-A more in depth guide can be found in our [documentation (Classic GUI)](https://hci-unihd.github.io/plant-seg/chapters/plantseg_classic_gui/).
 
-## Pipeline Usage (command line)
-Our pipeline is completely configuration file based and does not require any coding.
-
+## Quick start using the Command line
 First, activate the newly created conda environment with:
 ```bash
 conda activate plant-seg
@@ -37,6 +34,4 @@ then, one can just start the pipeline with
 ```bash
 plantseg --config CONFIG_PATH
 ```
-where `CONFIG_PATH` is the path to the YAML configuration file. See [config.yaml](examples/config.yaml) for a sample configuration
-file and our [documentation (CLI)](https://hci-unihd.github.io/plant-seg/chapters/plantseg_classic_cli/) for a
-detailed description of the parameters.
+where `CONFIG_PATH` is the path to the YAML configuration file. See [config.yaml](examples/config.yaml) for a sample configuration file.

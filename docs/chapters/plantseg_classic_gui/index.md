@@ -1,10 +1,5 @@
 # PlantSeg from GUI
-
-The graphical user interface is the easiest way to configure and run PlantSeg.
-Currently the GUI does not allow to visualize or interact with the data.
-We recommend using [MorphographX](https://www.mpipz.mpg.de/MorphoGraphX) or
-[Fiji](https://fiji.sc/) in order to assert the success and quality of the pipeline results.
-
+The graphical user interface is the easiest way to configure and run PlantSeg on multiple data.
 ![alt text](https://github.com/hci-unihd/plant-seg/raw/assets/images/plantseg_overview.png)
 
 ## File Browser Widget
