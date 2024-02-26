@@ -172,7 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Troubleshooting</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Troubleshooting  <!-- omit in toc --></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interactive PlantSeg with Napari</span></p>
 <ul class="nav bd-sidenav">
@@ -373,7 +373,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -384,11 +386,23 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Troubleshooting</h1>
+    <h1>Troubleshooting  <!-- omit in toc --></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#could-not-load-library-libcudnn-ops-infer-so-8"><code class="docutils literal notranslate"><span class="pre">Could</span> <span class="pre">not</span> <span class="pre">load</span> <span class="pre">library</span> <span class="pre">libcudnn_ops_infer.so.8.</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia-driver-on-your-system-is-too-old-or-torch-not-compiled-with-cuda-enabled"><code class="docutils literal notranslate"><span class="pre">NVIDIA</span> <span class="pre">driver</span> <span class="pre">on</span> <span class="pre">your</span> <span class="pre">system</span> <span class="pre">is</span> <span class="pre">too</span> <span class="pre">old</span></code> or <code class="docutils literal notranslate"><span class="pre">Torch</span> <span class="pre">not</span> <span class="pre">compiled</span> <span class="pre">with</span> <span class="pre">CUDA</span> <span class="pre">enabled</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runtimeerror-key-key-name-is-missing-plant-seg-requires-key-name-to-run"><code class="docutils literal notranslate"><span class="pre">RuntimeError:</span> <span class="pre">key</span> <span class="pre">:</span> <span class="pre">KEY_NAME</span> <span class="pre">is</span> <span class="pre">missing,</span> <span class="pre">plant-seg</span> <span class="pre">requires</span> <span class="pre">KEY_NAME</span> <span class="pre">to</span> <span class="pre">run</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cannot-import-name-lifted-problem-from-probabilities"><code class="docutils literal notranslate"><span class="pre">cannot</span> <span class="pre">import</span> <span class="pre">name</span> <span class="pre">'lifted_problem_from_probabilities'</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-issues">Other issues</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -398,11 +412,31 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="troubleshooting">
-<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="troubleshooting-omit-in-toc">
+<h1>Troubleshooting  <!-- omit in toc --><a class="headerlink" href="#troubleshooting-omit-in-toc" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
-<li><p>If you stumble in the following error message:</p></li>
+<li><p><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">Could</span> <span class="pre">not</span> <span class="pre">load</span> <span class="pre">library</span> <span class="pre">libcudnn_ops_infer.so.8.</span></code></span></p></li>
+<li><p><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">NVIDIA</span> <span class="pre">driver</span> <span class="pre">on</span> <span class="pre">your</span> <span class="pre">system</span> <span class="pre">is</span> <span class="pre">too</span> <span class="pre">old</span></code> or <code class="docutils literal notranslate"><span class="pre">Torch</span> <span class="pre">not</span> <span class="pre">compiled</span> <span class="pre">with</span> <span class="pre">CUDA</span> <span class="pre">enabled</span></code></span></p></li>
+<li><p><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">RuntimeError:</span> <span class="pre">key</span> <span class="pre">:</span> <span class="pre">KEY_NAME</span> <span class="pre">is</span> <span class="pre">missing,</span> <span class="pre">plant-seg</span> <span class="pre">requires</span> <span class="pre">KEY_NAME</span> <span class="pre">to</span> <span class="pre">run</span></code></span></p></li>
+<li><p><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">cannot</span> <span class="pre">import</span> <span class="pre">name</span> <span class="pre">'lifted_problem_from_probabilities'</span></code></span></p></li>
+<li><p><span class="xref myst">Other issues</span></p></li>
 </ul>
+<hr class="docutils" />
+<section id="could-not-load-library-libcudnn-ops-infer-so-8">
+<h2><code class="docutils literal notranslate"><span class="pre">Could</span> <span class="pre">not</span> <span class="pre">load</span> <span class="pre">library</span> <span class="pre">libcudnn_ops_infer.so.8.</span></code><a class="headerlink" href="#could-not-load-library-libcudnn-ops-infer-so-8" title="Permalink to this heading">#</a></h2>
+<p>If you stumble in the following error message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Could</span> <span class="ow">not</span> <span class="n">load</span> <span class="n">library</span> <span class="n">libcudnn_ops_infer</span><span class="o">.</span><span class="n">so</span><span class="mf">.8</span><span class="o">.</span> <span class="n">Error</span><span class="p">:</span> <span class="n">libcudnn_ops_infer</span><span class="o">.</span><span class="n">so</span><span class="mf">.8</span><span class="p">:</span> <span class="n">cannot</span> <span class="nb">open</span> <span class="n">shared</span> <span class="nb">object</span> <span class="n">file</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
+</pre></div>
+</div>
+<p>Just install <code class="docutils literal notranslate"><span class="pre">cudnn</span></code> by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mamba install -c conda-forge cudnn
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="nvidia-driver-on-your-system-is-too-old-or-torch-not-compiled-with-cuda-enabled">
+<h2><code class="docutils literal notranslate"><span class="pre">NVIDIA</span> <span class="pre">driver</span> <span class="pre">on</span> <span class="pre">your</span> <span class="pre">system</span> <span class="pre">is</span> <span class="pre">too</span> <span class="pre">old</span></code> or <code class="docutils literal notranslate"><span class="pre">Torch</span> <span class="pre">not</span> <span class="pre">compiled</span> <span class="pre">with</span> <span class="pre">CUDA</span> <span class="pre">enabled</span></code><a class="headerlink" href="#nvidia-driver-on-your-system-is-too-old-or-torch-not-compiled-with-cuda-enabled" title="Permalink to this heading">#</a></h2>
+<p>If you stumble in the following error message:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">AssertionError</span><span class="p">:</span>
 <span class="n">The</span> <span class="n">NVIDIA</span> <span class="n">driver</span> <span class="n">on</span> <span class="n">your</span> <span class="n">system</span> <span class="ow">is</span> <span class="n">too</span> <span class="n">old</span> <span class="p">(</span><span class="n">found</span> <span class="n">version</span> <span class="n">xxxx</span><span class="p">)</span><span class="o">.</span>
 <span class="n">Please</span> <span class="n">update</span> <span class="n">your</span> <span class="n">GPU</span> <span class="n">driver</span> <span class="n">by</span> <span class="n">downloading</span> <span class="ow">and</span> <span class="n">installing</span> <span class="n">a</span> <span class="n">new</span>
@@ -435,12 +469,14 @@ You can check your current cuda version by typing in the terminal</p>
 </pre></div>
 </div>
 <p>Alternatively one can create the <code class="docutils literal notranslate"><span class="pre">plant-seg</span></code> environment from scratch and ensuring the correct version of cuda/pytorch, by:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">plant</span><span class="o">-</span><span class="n">seg</span> <span class="o">-</span><span class="n">c</span> <span class="n">lcerrone</span> <span class="o">-</span><span class="n">c</span> <span class="n">abailoni</span> <span class="o">-</span><span class="n">c</span> <span class="n">cpape</span> <span class="o">-</span><span class="n">c</span> <span class="n">awolny</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">cudatoolkit</span><span class="o">=&lt;</span><span class="n">YOU_CUDA_VERSION</span><span class="o">&gt;</span> <span class="n">plantseg</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">plant</span><span class="o">-</span><span class="n">seg</span> <span class="o">-</span><span class="n">c</span> <span class="n">lcerrone</span> <span class="o">-</span><span class="n">c</span> <span class="n">abailoni</span> <span class="o">-</span><span class="n">c</span> <span class="n">cpape</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">cudatoolkit</span><span class="o">=&lt;</span><span class="n">YOU_CUDA_VERSION</span><span class="o">&gt;</span> <span class="n">plantseg</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>If you use plantseg from the GUI and you receive an error similar to:</p></li>
-</ul>
+<hr class="docutils" />
+</section>
+<section id="runtimeerror-key-key-name-is-missing-plant-seg-requires-key-name-to-run">
+<h2><code class="docutils literal notranslate"><span class="pre">RuntimeError:</span> <span class="pre">key</span> <span class="pre">:</span> <span class="pre">KEY_NAME</span> <span class="pre">is</span> <span class="pre">missing,</span> <span class="pre">plant-seg</span> <span class="pre">requires</span> <span class="pre">KEY_NAME</span> <span class="pre">to</span> <span class="pre">run</span></code><a class="headerlink" href="#runtimeerror-key-key-name-is-missing-plant-seg-requires-key-name-to-run" title="Permalink to this heading">#</a></h2>
+<p>If you use plantseg from the GUI and you receive an error similar to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">key</span> <span class="p">:</span> <span class="s1">&#39;crop_volume&#39;</span> <span class="ow">is</span> <span class="n">missing</span><span class="p">,</span> <span class="n">plant</span><span class="o">-</span><span class="n">seg</span> <span class="n">requires</span> <span class="s1">&#39;crop_volume&#39;</span> <span class="n">to</span> <span class="n">run</span>
 </pre></div>
 </div>
@@ -451,17 +487,17 @@ You should be able to solve it by removing the corrupted file <code class="docut
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rm ~/.plantseg_models/configs/config_gui_last.yaml
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>If you use plantseg from the comand line and you receive an error similar to:</p></li>
-</ul>
+<p>If you use plantseg from the command line, and you receive an error similar to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">key</span> <span class="p">:</span> <span class="s1">&#39;crop_volume&#39;</span> <span class="ow">is</span> <span class="n">missing</span><span class="p">,</span> <span class="n">plant</span><span class="o">-</span><span class="n">seg</span> <span class="n">requires</span> <span class="s1">&#39;crop_volume&#39;</span> <span class="n">to</span> <span class="n">run</span>
 </pre></div>
 </div>
-<p>Please make sure that your configuratiuon has the correct formatting and contains all required keys.
+<p>Please make sure that your configuration has the correct formatting and contains all required keys.
 An updated example can be found inside the directory <code class="docutils literal notranslate"><span class="pre">examples</span></code>, in this repository.</p>
-<ul class="simple">
-<li><p>If when trying to execute the Lifted Multicut pipeline you receive an error like:</p></li>
-</ul>
+<hr class="docutils" />
+</section>
+<section id="cannot-import-name-lifted-problem-from-probabilities">
+<h2><code class="docutils literal notranslate"><span class="pre">cannot</span> <span class="pre">import</span> <span class="pre">name</span> <span class="pre">'lifted_problem_from_probabilities'</span></code><a class="headerlink" href="#cannot-import-name-lifted-problem-from-probabilities" title="Permalink to this heading">#</a></h2>
+<p>If when trying to execute the Lifted Multicut pipeline you receive an error like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;cannot import name &#39;</span><span class="n">lifted_problem_from_probabilities</span><span class="s1">&#39; from &#39;</span><span class="n">elf</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">features</span><span class="s1">&#39;&#39;</span>
 </pre></div>
 </div>
@@ -469,11 +505,16 @@ An updated example can be found inside the directory <code class="docutils liter
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">python</span><span class="o">-</span><span class="n">elf</span>
 </pre></div>
 </div>
+<hr class="docutils" />
+</section>
+<section id="other-issues">
+<h2>Other issues<a class="headerlink" href="#other-issues" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>PlantSeg is under active development so it may happen that the models/configuration files saved in <code class="docutils literal notranslate"><span class="pre">~/.plantseg_modes</span></code>
+<li><p>PlantSeg is under active development, so it may happen that the models/configuration files saved in <code class="docutils literal notranslate"><span class="pre">~/.plantseg_modes</span></code>
 are outdated. In case of errors related to loading the configuration file, please close the PlantSeg app,
 remove <code class="docutils literal notranslate"><span class="pre">~/.plantseg_models</span></code> directory and try again.</p></li>
 </ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -530,6 +571,24 @@ remove <code class="docutils literal notranslate"><span class="pre">~/.plantseg_
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#could-not-load-library-libcudnn-ops-infer-so-8"><code class="docutils literal notranslate"><span class="pre">Could</span> <span class="pre">not</span> <span class="pre">load</span> <span class="pre">library</span> <span class="pre">libcudnn_ops_infer.so.8.</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia-driver-on-your-system-is-too-old-or-torch-not-compiled-with-cuda-enabled"><code class="docutils literal notranslate"><span class="pre">NVIDIA</span> <span class="pre">driver</span> <span class="pre">on</span> <span class="pre">your</span> <span class="pre">system</span> <span class="pre">is</span> <span class="pre">too</span> <span class="pre">old</span></code> or <code class="docutils literal notranslate"><span class="pre">Torch</span> <span class="pre">not</span> <span class="pre">compiled</span> <span class="pre">with</span> <span class="pre">CUDA</span> <span class="pre">enabled</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runtimeerror-key-key-name-is-missing-plant-seg-requires-key-name-to-run"><code class="docutils literal notranslate"><span class="pre">RuntimeError:</span> <span class="pre">key</span> <span class="pre">:</span> <span class="pre">KEY_NAME</span> <span class="pre">is</span> <span class="pre">missing,</span> <span class="pre">plant-seg</span> <span class="pre">requires</span> <span class="pre">KEY_NAME</span> <span class="pre">to</span> <span class="pre">run</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cannot-import-name-lifted-problem-from-probabilities"><code class="docutils literal notranslate"><span class="pre">cannot</span> <span class="pre">import</span> <span class="pre">name</span> <span class="pre">'lifted_problem_from_probabilities'</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-issues">Other issues</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
